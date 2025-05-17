@@ -1,0 +1,21 @@
+.feature-container {
+    padding: 1rem;
+    margin: 0 auto;
+    height: 35vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 15rem;
+    grid-template-columns: 30rem 30rem;
+    column-gap: 5rem;
+    justify-content: center;
+    align-content: center;
+}
+
+.mars-feature-container {
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+.mars-feature-container:hover {
+    transform: scale(1.2);
+}
