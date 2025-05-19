@@ -1,0 +1,5 @@
+<div class="photos-container">
+    @for(photo of photos.photos; track photo.id) {
+        <photo-card [imgSrc]="photo.img_src"></photo-card>
+    }
+</div>

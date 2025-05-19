@@ -6,36 +6,10 @@
 
 body {
     min-height: 100vh;
-    max-width: 100vw;
+    width: 100vw;
     overflow-x: hidden;
     color: white;
-
-    // background-color: black;
-    // background-image: url("https://cdn.pixabay.com/photo/2011/12/13/14/30/mars-11013_1280.jpg");
-    // background-size: 40% 70%;
-    // background-position: 50% 50%;
-    // background-repeat: no-repeat;
-    
-    // background-color: black;
-    // background-image: url("https://cdn.pixabay.com/photo/2012/01/09/10/21/mars-11608_1280.jpg");
-    // background-size: 100% 80%;
-    // background-position: 0% 100%;
-    // background-repeat: no-repeat;
-
     background-color: black;
-    background-image: url("https://cdn.pixabay.com/photo/2011/12/13/14/30/mars-11012_1280.jpg");
-    background-size: 30% 55%;
-    background-position: 50% 80%;
-    background-repeat: no-repeat;
-
-    // background-image: url("https://cdn.pixabay.com/photo/2020/09/11/20/33/mars-5564141_1280.jpg");
-    // background-size: cover;
-    // background-repeat: no-repeat;
-
-    // background-image: url("https://cdn.pixabay.com/photo/2012/01/09/10/31/planet-11613_1280.jpg");
-    // background-size: 100% 100%;
-    // background-repeat: no-repeat;
-
 }
 
 a {
