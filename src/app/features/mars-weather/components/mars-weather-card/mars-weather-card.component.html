@@ -1,0 +1,11 @@
+<mat-card class="weather-card">
+  <mat-card-header>
+    <mat-card-title>Sol {{ solData?.sol }}</mat-card-title>
+    <mat-card-subtitle>{{ solData?.First_UTC | date }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Average Temperature:</strong> {{ solData?.AT?.av ?? 'no data' }} °C</p>
+    <p><strong>Pressure:</strong> {{ solData?.PRE?.av ?? 'no data' }} Pa</p>
+    <p><strong>Wind Speed:</strong> {{ solData?.HWS?.av ?? 'no data' }} m/s</p>
+  </mat-card-content>
+</mat-card>
