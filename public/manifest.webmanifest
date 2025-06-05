@@ -2,6 +2,9 @@
   "name": "mars-app",
   "short_name": "mars-app",
   "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#212121",
+  "background_color": "#ffffff",
   "scope": "./",
   "start_url": "./",
   "icons": [

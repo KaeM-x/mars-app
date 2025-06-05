@@ -43,3 +43,7 @@ Thumbs.db
 
 # Angular environmental variables
 src/environments/environment.ts
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
