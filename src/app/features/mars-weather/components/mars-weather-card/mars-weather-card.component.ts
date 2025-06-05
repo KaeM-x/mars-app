@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { WeatherNoteService } from '../../services/weather-note.service';
 import { Observable } from 'rxjs';
 import { Output, EventEmitter } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { NoteDialogComponent } from '../note-dialog/note-dialog.component';
 
 @Component({
   selector: 'app-mars-weather-card',
@@ -15,10 +17,8 @@ import { Output, EventEmitter } from '@angular/core';
   imports: [
     CommonModule,
     MatCardModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   templateUrl: './mars-weather-card.component.html',
   styleUrls: ['./mars-weather-card.component.scss']
@@ -31,13 +31,26 @@ export class MarsWeatherCardComponent implements OnInit {
   showForm = false;
   showNotes = false;
 
-  constructor(private noteService: WeatherNoteService) {}
+  constructor(private noteService: WeatherNoteService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     if (this.solData?.sol) {
       this.notes$ = this.noteService.getNotesForSol(this.solData.sol);
     }
   }
+
+openNoteDialog(mode: 'form' | 'list') {
+  const dialogRef = this.dialog.open(NoteDialogComponent, {
+    width: '400px',
+    data: { sol: this.solData.sol, mode }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result?.success) {
+      this.noteAdded.emit(result.sol);
+    }
+  });
+}
 
 submitNote(): void {
   if (!this.noteContent.trim()) return;

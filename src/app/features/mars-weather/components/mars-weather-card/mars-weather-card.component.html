@@ -36,40 +36,10 @@
   </mat-card-content>
 </mat-card>
 
-<!-- Przyciski -->
 <div class="note-actions">
-  <button mat-stroked-button color="accent" (click)="showForm = !showForm">
-    {{ showForm ? 'Cancel' : 'Add Note' }}
-  </button>
-
-  <button mat-stroked-button color="primary" (click)="showNotes = !showNotes">
-    {{ showNotes ? 'Hide Notes' : 'Show Notes' }}
-  </button>
+  <button mat-stroked-button color="accent" (click)="openNoteDialog('form')">Add Note</button>
+  <button mat-stroked-button color="primary" (click)="openNoteDialog('list')">Show Notes</button>
 </div>
 
-<!-- Formularz -->
-<form *ngIf="showForm" (ngSubmit)="submitNote()" class="note-form">
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Your note about Sol {{ solData?.sol }}</mat-label>
-    <textarea matInput [(ngModel)]="noteContent" name="note" required></textarea>
-  </mat-form-field>
-  <button mat-raised-button color="accent" type="submit">Save Note</button>
-</form>
-
-<!-- Lista notatek -->
-<ng-container *ngIf="notes$ | async as notes">
-  <div *ngIf="showNotes">
-    <h4>Notes:</h4>
-    <ul *ngIf="notes.length > 0; else noNotes">
-      <li *ngFor="let note of notes">
-        <small>{{ note.createdAt.toDate() | date: 'short' }}</small><br />
-        {{ note.content }}
-      </li>
-    </ul>
-    <ng-template #noNotes>
-      <p>No notes yet.</p>
-    </ng-template>
-  </div>
-</ng-container>
 
 
