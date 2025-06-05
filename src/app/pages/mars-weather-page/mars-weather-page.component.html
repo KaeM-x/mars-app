@@ -7,5 +7,6 @@
   <app-mars-weather-card
     *ngFor="let sol of weatherData"
     [solData]="sol"
-  ></app-mars-weather-card>
+    (noteAdded)="handleNoteAdded($event)">
+  </app-mars-weather-card>
 </div>

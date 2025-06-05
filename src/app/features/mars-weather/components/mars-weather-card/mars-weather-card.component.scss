@@ -35,3 +35,37 @@
     font-size: 14px;
   }
 }
+
+.note-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.note-form {
+  margin-top: 12px;
+
+  .full-width {
+    width: 100%;
+  }
+
+  button {
+    margin-top: 8px;
+  }
+}
+
+ul {
+  padding-left: 16px;
+  font-size: 14px;
+  margin-top: 8px;
+
+  li {
+    margin-bottom: 8px;
+  }
+}
+
+h4 {
+  padding-top: 8px;
+}
+
