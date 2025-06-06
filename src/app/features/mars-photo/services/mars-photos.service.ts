@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
-import { environment } from '../../../../environment'
+import { environment } from '../../../../environments/environment'
 import { ApiResponsePhotos } from '../models/photos/api-response-photos.model'
 
 @Injectable({
@@ -10,7 +10,7 @@ import { ApiResponsePhotos } from '../models/photos/api-response-photos.model'
 })
 export class MarsPhotosService {
     private readonly http = inject(HttpClient)
-    private readonly apiKey = environment.apiKey
+    private readonly apiKey = environment.nasaApiKey
 
     private readonly photoApiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
 

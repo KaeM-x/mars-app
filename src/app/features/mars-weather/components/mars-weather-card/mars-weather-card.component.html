@@ -1,0 +1,45 @@
+<mat-card class="weather-card">
+  <mat-card-header>
+    <mat-card-title>Sol {{ solData?.sol }}</mat-card-title>
+    <mat-card-subtitle>
+      {{ solData?.First_UTC | date: 'mediumDate' }} – Season: {{ solData?.Season ?? 'unknown' }}
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="weather-grid">
+      <div>
+        <p><strong>Avg Temp:</strong></p>
+        <p>{{ solData?.AT?.av ?? 'no data' }} °C</p>
+      </div>
+      <div>
+        <p><strong>Min Temp:</strong></p>
+        <p>{{ solData?.AT?.mn ?? 'no data' }} °C</p>
+      </div>
+      <div>
+        <p><strong>Max Temp:</strong></p>
+        <p>{{ solData?.AT?.mx ?? 'no data' }} °C</p>
+      </div>
+      <div>
+        <p><strong>Pressure:</strong></p>
+        <p>{{ solData?.PRE?.av ?? 'no data' }} Pa</p>
+      </div>
+      <div>
+        <p><strong>Wind Speed:</strong></p>
+        <p>{{ solData?.HWS?.av ?? 'no data' }} m/s</p>
+      </div>
+      <div>
+        <p><strong>Wind Dir:</strong></p>
+        <p>{{ solData?.WD?.most_common?.compass_point ?? 'no data' }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div class="note-actions">
+  <button mat-stroked-button color="accent" (click)="openNoteDialog('form')">Add Note</button>
+  <button mat-stroked-button color="primary" (click)="openNoteDialog('list')">Show Notes</button>
+</div>
+
+
+

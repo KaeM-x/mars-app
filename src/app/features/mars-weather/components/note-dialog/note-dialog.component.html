@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>
+  {{ data.mode === 'form' ? 'Add Note' : 'Notes for Sol ' + data.sol }}
+</h2>
+
+<div mat-dialog-content *ngIf="data.mode === 'form'">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Your note</mat-label>
+    <textarea matInput [(ngModel)]="noteContent" rows="4"></textarea>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-content *ngIf="data.mode === 'list'">
+  <ng-container *ngIf="notes$ | async as notes">
+    <ul *ngIf="notes.length > 0; else noNotes">
+      <li *ngFor="let note of notes">
+        <small>{{ note.createdAt.toDate() | date: 'short' }}</small><br />
+        {{ note.content }}
+      </li>
+    </ul>
+    <ng-template #noNotes>
+      <p>No notes yet for this sol.</p>
+    </ng-template>
+  </ng-container>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button *ngIf="data.mode === 'form'" mat-raised-button color="primary" (click)="submitNote()">Save</button>
+</div>
