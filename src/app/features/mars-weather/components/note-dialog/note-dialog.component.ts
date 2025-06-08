@@ -7,14 +7,37 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WeatherNoteService } from '../../services/weather-note.service';
 import { Observable } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  query,
+  stagger
+} from '@angular/animations';
 
 @Component({
   standalone: true,
   selector: 'app-note-dialog',
   templateUrl: './note-dialog.component.html',
   styleUrls: ['./note-dialog.component.scss'],
+  animations: [
+    trigger('listAnimation', [
+      transition('* => *', [
+        query(
+          ':enter',
+          [
+            style({ opacity: 0, transform: 'translateY(10px)' }),
+            stagger(100, [
+              animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+            ])
+          ],
+          { optional: true }
+        )
+      ])
+    ])
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -58,5 +81,9 @@ export class NoteDialogComponent {
       .then(() => console.log('Note deleted:', noteId))
       .catch(err => console.error('Error deleting note:', err));
   }
+  }
+
+  trackById(index: number, note: any): string {
+  return note.id;
 }
 }

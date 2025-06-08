@@ -11,8 +11,8 @@
 
 <div mat-dialog-content *ngIf="data.mode === 'list'">
   <ng-container *ngIf="notes$ | async as notes">
-    <ul *ngIf="notes.length > 0; else noNotes">
-  <li *ngFor="let note of notes">
+<ul *ngIf="notes.length > 0; else noNotes" [@listAnimation]="notes.length">
+  <li *ngFor="let note of notes; trackBy: trackById">
     <div class="note-header">
       <small>{{ note.createdAt.toDate() | date: 'short' }}</small>
       <button mat-icon-button color="warn" (click)="confirmDelete(note.id)">

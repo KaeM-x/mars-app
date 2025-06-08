@@ -30,6 +30,8 @@ mat-dialog-actions {
 ul {
   list-style-type: none;
   padding-left: 0;
+  overflow: hidden;
+  max-height: 100%;
 
   li {
     word-wrap: break-word;
