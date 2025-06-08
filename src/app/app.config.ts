@@ -7,8 +7,8 @@ import { routes } from './app.routes';
 import { provideServiceWorker } from '@angular/service-worker';
 
 import { provideHttpClient } from '@angular/common/http';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { initializeFirestore, persistentLocalCache, provideFirestore } from '@angular/fire/firestore';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,6 +20,10 @@ export const appConfig: ApplicationConfig = {
           }),
     provideAnimations(),
     provideFirebaseApp(() => initializeApp(environment.firebase)), 
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => {
+      return initializeFirestore(getApp(), {
+      localCache: persistentLocalCache()
+      });
+    })
   ]
 };
