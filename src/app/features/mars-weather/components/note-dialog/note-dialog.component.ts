@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WeatherNoteService } from '../../services/weather-note.service';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   standalone: true,
@@ -19,7 +21,8 @@ import { Observable } from 'rxjs';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class NoteDialogComponent {
@@ -46,4 +49,14 @@ export class NoteDialogComponent {
   close(): void {
     this.dialogRef.close();
   }
+
+  confirmDelete(noteId: string): void {
+  const confirm = window.confirm('Are you sure you want to delete this note?');
+
+  if (confirm) {
+    this.noteService.deleteNote(noteId)
+      .then(() => console.log('Note deleted:', noteId))
+      .catch(err => console.error('Error deleting note:', err));
+  }
+}
 }

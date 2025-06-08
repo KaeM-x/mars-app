@@ -12,11 +12,16 @@
 <div mat-dialog-content *ngIf="data.mode === 'list'">
   <ng-container *ngIf="notes$ | async as notes">
     <ul *ngIf="notes.length > 0; else noNotes">
-      <li *ngFor="let note of notes">
-        <small>{{ note.createdAt.toDate() | date: 'short' }}</small><br />
-        {{ note.content }}
-      </li>
-    </ul>
+  <li *ngFor="let note of notes">
+    <div class="note-header">
+      <small>{{ note.createdAt.toDate() | date: 'short' }}</small>
+      <button mat-icon-button color="warn" (click)="confirmDelete(note.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    <div class="note-content">{{ note.content }}</div>
+  </li>
+</ul>
     <ng-template #noNotes>
       <p>No notes yet for this sol.</p>
     </ng-template>

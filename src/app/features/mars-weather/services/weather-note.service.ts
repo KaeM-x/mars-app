@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, addDoc, Timestamp, query, where, orderBy } from '@angular/fire/firestore';
 import { collectionData } from 'rxfire/firestore';
 import { Observable } from 'rxjs';
+import { doc, deleteDoc } from 'firebase/firestore';
 
 
 @Injectable({ providedIn: 'root' })
@@ -22,4 +23,10 @@ export class WeatherNoteService {
     const q = query(notesRef, where('sol', '==', sol), orderBy('createdAt', 'desc'));
     return collectionData(q, { idField: 'id' });
   }
+
+  
+deleteNote(noteId: string): Promise<void> {
+  const noteRef = doc(this.firestore, `weather-notes/${noteId}`);
+  return deleteDoc(noteRef);
+}
 }
