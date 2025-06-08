@@ -51,20 +51,4 @@ openNoteDialog(mode: 'form' | 'list') {
     }
   });
 }
-
-submitNote(): void {
-  if (!this.noteContent.trim()) return;
-
-  this.noteService.addNote(this.solData.sol, this.noteContent)
-    .then(() => {
-      this.noteContent = '';
-      this.showForm = false;
-
-      this.noteAdded.emit(this.solData.sol);
-    })
-    .catch(err => {
-      console.error('Error saving note:', err);
-      alert('Failed to save note.');
-    });
-}
 }
