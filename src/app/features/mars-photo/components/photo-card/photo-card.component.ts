@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { Photo } from '../../models/photos/photo.model'
 
 @Component({
     selector: 'photo-card',
@@ -6,11 +7,11 @@ import { Component, Input, OnInit } from '@angular/core'
     styleUrl: 'photo-card.component.scss',
 })
 export class PhotoCardComponent implements OnInit {
-    @Input() imgSrc!: string
+    @Input() photo!: Photo
 
     backgroundImage!: string
 
     ngOnInit(): void {
-        this.backgroundImage = "url(\"" + this.imgSrc +"\")"
+        this.backgroundImage = "url(\"" + this.photo.img_src +"\")"
     }
 }

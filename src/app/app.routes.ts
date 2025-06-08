@@ -4,7 +4,8 @@ import { MarsPhotosPageComponent } from './pages/mars-photos-page/mars-photos-pa
 import { MarsWeatherPageComponent } from './pages/mars-weather-page/mars-weather-page.component';
 
 export const routes: Routes = [
-    {path: '', component: HomePageComponent },
+    {path: '', component: HomePageComponent},
     {path: 'mars-photos', component: MarsPhotosPageComponent },
-    {path: 'mars-weather', component: MarsWeatherPageComponent}
+    {path: 'mars-weather', component: MarsWeatherPageComponent},
+    {path: '**', redirectTo: ''}
 ]

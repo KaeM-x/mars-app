@@ -1,4 +1,18 @@
 <div class="photos-page-container">
-    <h1>Test</h1>
-    <photo-card-list [photos]="photos$"></photo-card-list>
+    <h2>Mars Rover Photos</h2>
+
+    <photos-query-params-form
+        [initialQueryParams]="currentQueryParams"
+        (queryParamsChanged)="onQueryParamsChanged($event)">
+    </photos-query-params-form>
+
+    @if (isLoading) {
+        <p>Loading data...</p>
+    } @else if (error) {
+        <p class="error-message">{{ error }}</p>
+    } @else if (photosData && photosData.photos && photosData.photos.length > 0) {
+        <photo-card-list [photos]="photosData.photos"></photo-card-list>
+    } @else {
+        <p>No photos found for the selected criteria. Try different parameters.</p>
+    }
 </div>

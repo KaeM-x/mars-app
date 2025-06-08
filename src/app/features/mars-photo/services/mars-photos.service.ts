@@ -1,9 +1,10 @@
 import { Injectable, inject } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
 import { environment } from '../../../../environments/environment'
 import { ApiResponsePhotos } from '../models/photos/api-response-photos.model'
+import { PhotosQueryParams } from '../models/photos-query-params.model'
 
 @Injectable({
     providedIn: 'root'
@@ -14,11 +15,18 @@ export class MarsPhotosService {
 
     private readonly photoApiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos"
 
-    getPhotosByMartianSol(sol: number): Observable<ApiResponsePhotos> {
+    getPhotos(params: PhotosQueryParams): Observable<ApiResponsePhotos> {
+        let httpParams = new HttpParams()
+        httpParams = httpParams.set('sol', params.sol.toString())
+        httpParams = httpParams.set('page', params.page.toString())
+        if(params.camera) {
+            httpParams = httpParams.set('camera', params.camera)
+        }
+
+        httpParams = httpParams.set('api_key', this.apiKey)
+
         return this.http.get<ApiResponsePhotos>(
-            this.photoApiUrl + "?"
-            + "sol=" + sol + "&"
-            + "api_key=" + this.apiKey
+            this.photoApiUrl, { params: httpParams }
         )
     }
 }

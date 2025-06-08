@@ -1,13 +1,13 @@
 div {
     height: 20rem;
     width: 35rem;
+    margin: 0 auto;
     margin-bottom: 1rem;
     background-size: cover;
     background-repeat: no-repeat;
     border: 0.1rem solid white;
     border-radius: 1rem;
 }
-
 
 div:hover {
     transform: scale(1.5);

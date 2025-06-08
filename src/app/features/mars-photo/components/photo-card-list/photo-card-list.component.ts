@@ -1,14 +1,14 @@
-import { Component, Input } from '@angular/core'
-
-import { PhotoCardComponent } from '../photo-card/photo-card.component' 
-import { ApiResponsePhotos } from '../../models/photos/api-response-photos.model'
+import { Component, Input } from '@angular/core';
+import { PhotoCardComponent } from '../photo-card/photo-card.component';
+import { Photo } from '../../models/photos/photo.model';
 
 @Component({
     selector: 'photo-card-list',
     templateUrl: './photo-card-list.component.html',
-    styleUrl: './photo-card-list.component.scss',
+    styleUrls: ['./photo-card-list.component.scss'],
+    standalone: true,
     imports: [PhotoCardComponent]
 })
 export class PhotoCardListComponent {
-    @Input() photos!: ApiResponsePhotos
+    @Input() photos: Photo[] = [];
 }

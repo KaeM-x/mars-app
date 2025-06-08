@@ -1,5 +1,7 @@
-<div class="photos-container">
-    @for(photo of photos.photos; track photo.id) {
-        <photo-card [imgSrc]="photo.img_src"></photo-card>
+<div class="photo-card-list-container">
+    @for (photo of photos; track photo.id) {
+        <photo-card [photo]="photo"></photo-card>
+    } @empty {
+        <p>No photos to display.</p>
     }
 </div>
