@@ -1,21 +1,63 @@
 .feature-container {
     padding: 1rem;
     margin: 0 auto;
-    height: 35vh;
-    width: 100vw;
     display: grid;
-    grid-template-rows: 15rem;
-    grid-template-columns: 30rem 30rem;
-    column-gap: 5rem;
+    grid-template-columns: repeat(2, auto);
+    /* <-- stałe kolumny */
+    gap: 35rem;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
+
 .mars-feature-container {
-    padding: 1rem;
+    width: 420px;
+    height: 250px;
     border-radius: 1.5rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    font-weight: bold;
+}
+
+
+.mars-feature-container h2 {
+    margin: 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
 }
 
 .mars-feature-container:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
+}
+
+.mars-weather-overlay {
+    height: 80%;
+    width: 100%;
+    background-image: url("https://cdn.pixabay.com/photo/2014/04/02/10/14/cloud-303181_1280.png");
+    background-size: 20% 50%;
+    background-position: 75% 0%;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+@media (max-width: 1450px) {
+    .feature-container {
+        grid-template-columns: 1fr !important;
+        row-gap: 2rem;
+    }
+
+    .mars-feature-container {
+        margin: 0 auto;
+        /* centrowanie kart */
+    }
 }

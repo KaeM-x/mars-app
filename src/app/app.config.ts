@@ -8,7 +8,6 @@ import { routes } from './app.routes';
 import { provideServiceWorker } from '@angular/service-worker';
 
 
-import { provideHttpClient } from '@angular/common/http';
 import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { initializeFirestore, persistentLocalCache, provideFirestore } from '@angular/fire/firestore';
 
