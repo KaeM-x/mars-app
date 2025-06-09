@@ -26,5 +26,31 @@
         ]
       }
     }
-  ]
+  ],
+  "dataGroups": [
+  {
+    "name": "nasa-weather-api",
+    "urls": [
+      "https://api.nasa.gov/insight_weather/**"
+    ],
+    "cacheConfig": {
+      "strategy": "freshness",
+      "maxSize": 20,
+      "maxAge": "6h",
+      "timeout": "5s"
+    }
+  },
+  {
+    "name": "firebase-firestore-notes",
+    "urls": [
+      "https://firestore.googleapis.com/**"
+    ],
+    "cacheConfig": {
+      "strategy": "performance",
+      "maxSize": 100,
+      "maxAge": "12h"
+    }
+  }
+]
+
 }

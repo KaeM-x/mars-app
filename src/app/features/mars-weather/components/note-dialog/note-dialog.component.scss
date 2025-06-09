@@ -30,6 +30,8 @@ mat-dialog-actions {
 ul {
   list-style-type: none;
   padding-left: 0;
+  overflow: hidden;
+  max-height: 100%;
 
   li {
     word-wrap: break-word;
@@ -57,4 +59,16 @@ p {
 
 textarea {
   resize: none;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-content {
+  margin-top: 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
