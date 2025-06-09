@@ -1,0 +1,55 @@
+<form [formGroup]="queryForm" (ngSubmit)="onSubmit()" class="query-params-form">
+    <div class="form-group">
+        <label for="sol">Sol:</label>
+        <input id="sol" type="number" formControlName="sol" min="0">
+        @if (queryForm.get('sol')?.invalid && queryForm.get('sol')?.touched) {
+            <div class="error-message">
+                @if (queryForm.get('sol')?.errors?.['required']) {
+                    <span>Sol is required.</span>
+                }
+                @if (queryForm.get('sol')?.errors?.['min']) {
+                    <span>Sol must be a positive number.</span>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <label for="camera">Camera:</label>
+        <select id="camera" formControlName="camera">
+            <option value="FHAZ">Front Hazard Avoidance Camera</option>
+            <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+            <option value="MAST">Mast Camera</option>
+            <option value="CHEMCAM">Chemistry and Camera Complex</option>
+            <option value="MAHLI">Mars Hand Lens Imager</option>
+            <option value="MARDI">Mars Descent Imager</option>
+            <option value="NAVCAM">Navigation Camera</option>
+            </select>
+    </div>
+
+    <div class="form-group">
+        <label for="page">Page:</label>
+        <input id="page" type="number" formControlName="page" min="1">
+        @if (queryForm.get('page')?.invalid && queryForm.get('page')?.touched) {
+            <div class="error-message">
+                @if (queryForm.get('page')?.errors?.['required']) {
+                    <span>Page is required.</span>
+                }
+                @if (queryForm.get('page')?.errors?.['min']) {
+                    <span>Page must be greater than or equal to one.</span>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" [disabled]="queryForm.invalid">Search Photos</button>
+        <button type="button" (click)="onReset()">Reset</button>
+    </div>
+
+    <div class="pagination-controls">
+        <button type="button" (click)="onPageChange(-1)" [disabled]="queryForm.get('page')?.value <= 1">Previous Page</button>
+        <span>Current Page: {{ queryForm.get('page')?.value }}</span>
+        <button type="button" (click)="onPageChange(1)">Next Page</button>
+    </div>
+</form>
