@@ -9,6 +9,9 @@ div {
     border-radius: 1rem;
 }
 
-div:hover {
+@media screen and (min-width: 1024px) {
+  div:hover {
     transform: scale(1.5);
+    margin-bottom: 5rem;
+  }
 }
