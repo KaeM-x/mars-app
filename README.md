@@ -1,3 +1,14 @@
+To run this app you need to create environment.ts file in src/environments containing:
+```
+export const environment = {
+  production: false,
+  nasaApiKey: {NASA_API_KEY},
+  firebase: {
+    {FIREBASE_CONFIG}
+  }
+};
+```
+
 # MarsApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
