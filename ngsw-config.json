@@ -50,7 +50,18 @@
       "maxSize": 100,
       "maxAge": "12h"
     }
+  },
+    {
+    "name": "nasa-mars-rover-photos",
+    "urls": [
+      "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/**"
+    ],
+    "cacheConfig": {
+      "strategy": "freshness",
+      "maxSize": 25,
+      "maxAge": "6h",
+      "timeout": "5s"
+    }
   }
 ]
-
 }
